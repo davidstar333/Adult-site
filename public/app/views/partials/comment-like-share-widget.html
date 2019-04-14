@@ -1,0 +1,16 @@
+<div class="wall_post_footer">
+  <div class="like_counts">
+    <ul class="list-inline">
+      <li><strong>{{ totalLikes }}</strong> Marks "Like"</li>
+      <li><strong>{{ totalComments }}</strong> comments(s)</li>
+    </ul>
+  </div>
+  <div class="like_btns">
+    <div class="btn-group btn-group-justified" role="group">
+      <a type="button" class="btn btn-dark" ng-click="likeThis()" ng-class="{'liked': liked == 1}"  ng-show="liked == 1"><i class="fa fa-thumbs-up"></i><span class="hidden-xs">like</span></a>
+      <a type="button" class="btn btn-dark" ng-click="likeThis()" ng-class="{'liked': liked == 1}"  ng-show="liked != 1"><i class="fa fa-thumbs-down"></i><span class="hidden-xs">Unlike</span></a>
+      <a type="button" class="btn btn-dark" ng-click="commentThis()"><i class="fa fa-comment"></i><span class="hidden-xs">Comment</span></a>
+      <a type="button" class="btn btn-dark" ng-click="shareThis()"><i class="fa fa-share"></i><span class="hidden-xs">Share</span></a>
+    </div>
+  </div>
+</div>

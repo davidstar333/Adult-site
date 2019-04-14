@@ -1,0 +1,28 @@
+<button type="button" class="btn btn-primary btn-block"
+  ng-click="sendCallRequest()"
+  ng-if="userRole !== 'model' && !userStreaming" ng-cloak>Send video call request</button>
+<button type="button" class="btn btn-primary btn-block"
+  ng-click="acceptRequest()"
+  ng-if="userRole === 'model' && !modelStreaming && streamingInfo.hasRoom" ng-cloak>Accept video call request</button>
+
+<button class="btn btn-danger btn-block" ng-if="(modelStreaming || userStreaming) && showMyCam" ng-click="stopStreaming()" ng-cloak>Stop streaming</button>
+
+<div ng-if="initVideoCall" ng-cloak>
+  <div id="main-cam">
+    <div class="peer-cam" ng-show="streamUrl != null">
+      <!-- <video-player vid-src="{{streamUrl}}" show-control="true"></video-player> -->
+      <video id="private-video-remote" autoplay></video>
+    </div>
+    <div class="my-cam" ng-class="{'fullcam': streamUrl == null, 'thumbcam': streamUrl != null}"
+      ng-if="showMyCam">
+      <video id="private-video-client" ng-init="getLocalVideo()" autoplay muted></video>
+    </div>
+    <div class="fullscreen-section" ng-show="modelStreaming || userStreaming">
+      <div class="fullscreen-section__inner">
+        <div class="transparent-bg"></div>
+        <a class="cursor" title="full screen mode" ng-click="showFullScreen()" ng-show="!isFullScreenMode"><i class="fa fa-expand"></i></a>
+        <a class="cursor" title="compress screen mode" ng-click="notShowFullScreen()" ng-show="isFullScreenMode"><i class="fa fa-compress"></i></a>
+      </div>
+    </div>
+  </div>
+</div>

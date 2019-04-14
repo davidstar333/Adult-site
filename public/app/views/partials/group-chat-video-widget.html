@@ -1,0 +1,51 @@
+<div ng-show="isOnline || onModelRoom">
+  <button type="button" class="btn btn-primary btn-block" ng-click="joinConversation()"
+          ng-if="userRole !== 'model'" ng-show="!initVideoCall && !userStreaming && !isStop">Join Conversation</button>
+  <button type="button" class="btn btn-primary btn-block" ng-click="startConversation()"
+          ng-if="userRole === 'model'" ng-show="!initVideoCall && !modelStreaming">Start Conversation</button>
+    <button class="btn btn-danger btn-block" ng-if="(modelStreaming || userStreaming) && showMyCam" ng-click="stopStreaming()">Leave room</button>
+  <div ng-if="initVideoCall">
+
+    <div id="main-cam">
+      <div class="my-cam">
+      </div>
+    </div>
+    <div id="custom_carousel" class="carousel slide" data-ride="carousel" data-interval="2500">
+          <!-- Wrapper for slides -->
+      <div class="carousel-inner">
+        <div class="item groupchat-item active" >
+          <div class="container-fluid" ng-if="streamUrl!=null">
+            <!-- <video-player vid-src="{{streamUrl}}" show-control="true"></video-player> -->
+            <video id="group-video-remote" autoplay muted></video>
+
+            <div class="fullscreen-section">
+              <div class="fullscreen-section__inner">
+                <div class="transparent-bg"></div>
+                <a class="cursor" title="full screen mode" ng-click="showFullScreen()" ng-show="!isFullScreenMode"><i class="fa fa-expand"></i></a>
+                <a class="cursor" title="compress screen mode" ng-click="notShowFullScreen()" ng-show="isFullScreenMode"><i class="fa fa-compress"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      <!-- End Item -->
+      </div>
+      <!-- End Carousel Inner -->
+      <div class="controls group-videos-streaming">
+          <ul class="nav">
+            <li data-target="#custom_carousel" data-slide-to="{{key}}" ng-repeat="(key, peer) in peers" ng-class="{'thumbnail-selected': key==streamActive}">
+              <a href="#" ng-click="changeCam(key)">
+                <!-- <video-player local-steam='{{localStream}}' peer-id='{{peer.mediaId}}' muted="localStream == peer.mediaId" vid-src="{{peer.stream}}" vid="{{key}}"></video-player> -->
+                <video ng-if="$index === 0" id="{{peer.mediaId}}" local-steam='{{localStream}}' peer-id='{{peer.mediaId}}' muted vid="{{key}}" autoplay></video>
+                <video ng-if="$index !== 0" id="{{peer.mediaId}}" local-steam='{{localStream}}' peer-id='{{peer.mediaId}}' vid="{{key}}" autoplay></video>
+              </a>
+            </li>
+          </ul>
+      </div>
+  </div>
+  <!-- End Carousel -->
+  </div>
+</div>
+<div ng-show="!isOnline && !onModelRoom && isOnline != null" ng-cloak>
+  <h3>Group currently is offline.</h3>
+  <a ng-href="{{groupLink}}" class="btn btn-block btn-warning" ng-show="groupLink != null">Go to new group room</a>
+</div>

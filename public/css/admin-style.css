@@ -1,0 +1,55 @@
+.right-header {
+    float: right;
+    margin-top: 10px;
+}
+.login-top {
+    float: left;
+    margin-right: 5px;
+}
+.button-register {
+    float: left;
+    border: 1px solid #000;
+}
+.login-top .form-control {
+    width: 150px;
+    display: inline-block;
+    margin-right: 5px;
+}
+.btn-grey {
+    background: #272727;
+    color: #fff;
+}
+.btn-grey:hover, .btn-grey:focus {
+    background: #000;
+    color: #fff;
+}
+.form-control, .btn {
+    border-radius: 0px;
+}
+.box li {
+    margin-bottom: 15px;
+    list-style: none;
+}
+.box-picvideo img {
+    width: 100%;
+}
+.box-picvideo {
+    position: relative;
+}
+.box-picvideo .line-picvideo {
+    position: absolute;
+    padding: 7px 10px;
+    background: rgba(0,0,0,0.7);
+    color: #fff;
+    width: 100%;
+    bottom: 0px;
+    left: 0px;
+}
+.line-picvideo .action-picvideo {
+    float: left;
+}
+.line-picvideo .delete-pic {
+    float: right;
+    font-size: 18px;
+    color: #fff;
+}

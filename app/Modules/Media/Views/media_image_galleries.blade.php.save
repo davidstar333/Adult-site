@@ -1,0 +1,56 @@
+<?php
+
+use App\Helpers\Helper as AppHelper;
+?>
+@extends('frontend')
+@section('content')
+@section('title', 'Image Galleries')
+<div class="filter-bar">  <!-- FILTER BAR-->
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="models_profiie_name">
+          <span>Image Galleries</span>
+        </div>
+      </div>
+      <div class=" col-sm-6">
+        <div class="search">
+          <form method="get" action="" >
+            <input placeholder="search..." type="text" name="q" value="{{Request::get('q')}}">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>    <!-- FILTER BAR END-->
+<div class="container">
+  <div class="row image-galleries">
+    @foreach($galleries as $gallery)
+    <div class="col-sm-3">
+      <div class="thumbnail">
+        <div class="caption">
+          <h4>{{str_limit($gallery->name, 20)}}</h4>
+          <p>{{str_limit($gallery->description, 50)}}</p>
+          <p>
+            @if($gallery->bought == null)
+            <a href="" class="label label-danger" rel="tooltip" title="Buy" onclick="buyItem({{$gallery->id}}, 'image')">Buy ({{$gallery->price.' '.str_plural('Token', $gallery->price)}})</a>
+            @else
+            <a href="{{URL('media/image-gallery/preview/'.$gallery->id)}}" class="label label-default" rel="tooltip" title="View">View</a>
+<!--            <a href="{{URL('media/image-gallery/download/'.$gallery->id)}}" target="_blank" class="label label-default" rel="tooltip" title="Download">Download</a>-->
+            @endif
+
+            </p>
+        </div>
+        <img src="{{AppHelper::getImageMeta($gallery->mainImage, IMAGE_MEDIUM)}}" alt="...">
+      </div>
+    </div>
+    @endforeach
+    @if(count($galleries) == 0)
+    <div>Image gallery not found.</div>
+    @endif    
+  </div>
+  {{$galleries->appends(Request::except('page'))->links()}}
+</div>
+
+</div><!-- /.container -->
+@endsection

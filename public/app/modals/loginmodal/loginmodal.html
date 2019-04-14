@@ -1,0 +1,29 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="myModalLabel">Log in</h4>
+</div> <!-- /.modal-header -->
+<div class="modal-body">
+  <form role="form">
+    <div class="form-group">
+      <div class="input-group">
+        <input type="text" class="form-control" id="uLogin" ng-model="data.username" placeholder="Login">
+        <label for="uLogin" class="input-group-addon glyphicon glyphicon-user"></label>
+      </div>
+    </div> <!-- /.form-group -->
+    <div class="form-group">
+      <div class="input-group">
+        <input type="password" ng-keyup="login($event)" class="form-control" name="" value="" ng-model="data.password" placeholder="Passord">
+        <label for="uPassword" class="input-group-addon glyphicon glyphicon-lock"></label>
+      </div> <!-- /.input-group -->
+    </div> <!-- /.form-group -->
+
+    <div class="form-group">
+      <div class="input-group">
+        <label class="alert alert-danger" ng-show="error">User or password does not correct</label>
+      </div> <!-- /.input-group -->
+    </div> <!-- /.form-group -->
+
+  </form>
+</div> <!-- /.modal-body -->
+<div class="modal-footer">
+  <button ng-click="getLogin()" class="form-control btn btn-primary">Chat Now</button>
+</div> <!-- /.modal-footer -->

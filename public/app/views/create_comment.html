@@ -1,0 +1,8 @@
+<form role='form' ng-submit="enterNewComment(commentForm, commentText)" name="commentForm">
+  <div class="input-group"> 
+    <input class="form-control" placeholder="Add a comment" id="commentText" name="commentText" type="text" ng-required='true' ng-model="commentText">
+    <span class="input-group-addon">
+      <a ng-click='enterNewComment(commentForm, commentText)'><i class="fa fa-edit"></i></a>  
+    </span>
+  </div>
+</form>

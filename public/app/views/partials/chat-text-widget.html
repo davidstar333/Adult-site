@@ -1,0 +1,53 @@
+<div class="tab-border">
+  <button class="btn btn-danger reset-message-btn" ng-click="resetMessage()" ng-show="isShowResetMessage && chatType === 'public'">Reset Messages</button>
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a ng-click="changeTab('chats')" aria-controls="chat" role="tab" data-toggle="tab">Chat</a></li>
+    <li role="presentation" ng-show="chatType != 'private'"><a ng-click="changeTab('users')" aria-controls="users" role="tab" data-toggle="tab">Users({{members.length}})</a></li>
+    <li role="presentation" ng-show="isShowPrivateRequest" ><a ng-click="changeTab('privateChat')" area-controls="privateChat" role="tab" data-toggle="tab" ng-class="{'hightLighTab': hightLighTab === true}">Private Chat (<span id="private-amount">{{videoRequests.length}}</span>)</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+
+  <div class="tab-content" >
+
+    <div role="tabpanel" class="tab-pane" ng-class="{'active': chatPanel == 'chats'}" m-chat-scroll>
+        <ul class="list-chat">
+          <li class="text-center"><a ng-show="enableLoadMore" ng-click="loadPreviousMessage()">Show previous message</a>
+            <div ng-show="showLoading"><i class="fa fa-refresh fa-spin fa-3x fa-fw margin-bottom"></i>
+  <span class="sr-only">Loading...</span></div>
+          </li>
+          <li ng-repeat="(key, msg) in chatMessages | orderBy: 'chatId'" ng-show="msg != null" ng-class="{'tip-chat': msg.tip == 'yes'}">
+            <strong ng-class="{'model': modelId==msg.userId, 'banned': msg.banStatus == 'yes'}">{{msg| chatUsername}} :</strong> <span ng-bind-html="msg.text | convertIcon"></span> <i ng-show="isShowRemoveMessage" class="fa fa-trash cursor" title="Delete this message" ng-click="removeMessage(msg.id)"></i>
+          </li>
+        </ul>
+        <div class="box-chat">
+            <div class="chat-mes">
+                <input type="text" autocomplete="off" ng-keyup="send($event)" emoji-input ng-model="data.text" name="message" class="form-control input-lg" placeholder="Type a message here..."/>
+            </div>
+            <button  class="btn btn-lg btn-danger" id="send-message" ng-click="send()">SEND</button>
+        </div>
+    </div>
+    <div role="tabpanel" class="tab-pane" ng-class="{'active': chatPanel == 'users'}" ng-show="chatType != 'private'">
+      <ul class="list-user list-user-public">
+        <li ng-repeat="member in members | unique: 'id'" id="user-{{member.id}}" ng-if="member.role !== 'guest'">
+            <span ng-show="chatType != 'group' || modelId != memberId">{{member| chatUsername}} </span>
+            <span ng-show="chatType == 'group' && modelId==memberId">{{member| chatUsername}}: {{member.spendTokens | round }} tokens/ {{member.time | minutePlural}}</span>
+        </li>
+        <li ng-show="guests.length">
+          <span>+ <% guests.length %> anonymous users</span>
+        </li>
+        <li ng-show="!members.length">
+          <span>There are no member online!</span>
+        </li>
+      </ul>
+    </div>
+    <div role="tabpanel" class="tab-pane tab-primary" ng-class="{'active': chatPanel=='privateChat'}">
+        <ul class="list-user">
+          <li ng-repeat="request in videoRequests" ng-attr-id="{{'private-'+request.id}}">
+              <img ng-src="{{request.avatar| avatar}}"> <a ng-href="<% request . requestUrl %>"><% request . name %> <i>({{ request.tokens | decimal: 2 }} tokens)</i></a> 
+          </li>
+        </ul>
+    </div>
+  </div>
+</div>

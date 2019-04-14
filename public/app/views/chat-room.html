@@ -1,0 +1,74 @@
+
+
+<div class="row" ng-show="isRoom">
+  <div class="col-md-5" ng-show="initVideoCall">
+    <h1>Video Cam</h1>
+    <div id="main-cam">
+      <div class="peer-cam">
+        <video-player vid-src="{{streamUrl}}"></video-player>
+      </div>
+<!--      <div class="col-md-12">
+        <div class="col-md-4"><a ng-click="stopMic()"><i class="fa fa-microphone"></i></a></div>
+        <div class="col-md-4"><a ng-click="stopHangouts()">HangOut</a></div>
+        <div class="col-md-4"><a ng-click="stopVideo()"><i class="fa fa-video-camera"></i></a></div>
+      </div>-->
+      <div class="col-md-12">
+        <ul class="list-unstyled video-list-thumbs row">
+          <li class="col-lg-3 col-sm-4 col-xs-6" ng-repeat="(key, peer) in peers">
+            <a ng-click="changeCam(key)" title="" ng-class="{'active': key === streamActive}">
+              <video-player vid-src="{{peer.stream}}"></video-player>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="my-cam">
+        <video ng-src="{{getLocalVideo()}}" autoplay muted></video>
+      </div>
+    </div>
+  </div>
+  <div ng-class="{'col-md-7': initVideoCall, 'col-md-12': !initVideoCall}">
+    <h1>Chat Room Demo</h1>
+
+    <div id="chat-room" class="alert-info row">
+      <div class="online col-md-3" ng-show="performerchat.member_list==='yes' || isModel"> <!-- TODO Load online-->
+        <div class="header-box">Members</div>
+        <div class="conversation-wrap col-lg-12">
+          <div class="media conversation" ng-repeat="member in members">
+            <a class="pull-left" href="#">
+              <img class="media-object" ng-src="{{member | avatar}}" />
+            </a>
+            <div class="media-body">
+              <h5 class="media-heading">{{member | chatUserName}}</h5>
+
+            </div>
+          </div>
+          <div class="alert alert-info" ng-if="!members.length">
+            <span>There are no member online!</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9 pull-right">
+        <div class="chat-message" ng-repeat="msg in chatMessages | orderBy : 'createdAt'">
+          {{msg | chatUserName}}: <span ng-bind-html="emoticons(msg.text)"></span>
+        </div>
+      </div>
+    </div>
+    <form id="send-message"  class="row">
+      <div class="input-group" ng-class="{'disabled-chatbox': !allowGuestChat || (!modelOnline && performerchat.leave_chat_opened == 'no')}">
+        <!-- <span class="input-group-addon label-info"><button ng-click="send()">Send</button></span> -->
+        <input type="text" autocomplete="off" ng-keyup="send($event)" ng-model="data.text"
+               name="message" class="form-control msg" ng-disabled="!allowGuestChat || (!modelOnline && performerchat.leave_chat_opened == 'no')"/>
+        <span class="input-group-addon label-info">
+          <a  class="list-icon btn-icon"
+              uib-popover-template="'/app/views/emoticons-popover.html'" popover-title="Select icons"
+              popover-placement="top-right" popover-animation="true">
+            <i class="fa fa-smile-o"></i>
+          </a>
+        </span>
+        <span class="input-group-addon label-info" ng-show="!isModel"><a ng-click="sendTip()">Send Tip</a></span>
+        <span class="input-group-addon label-info"><a ng-click="makeACall()"><i class="fa fa-video-camera"></i></a></span>
+      </div>
+    </form>
+  </div>
+</div>

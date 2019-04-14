@@ -1,0 +1,24 @@
+<div ng-if="online">
+  <div class="show-model">
+     <div id="video-container">
+       <div></div>
+     </div>
+     <div class="group-chat-videos">
+       <ul class="row">
+         <li ng-repeat="vid in videos" class="col-sm-3">
+           <div vc-video video="vid.video"></div>
+         </li>
+       </ul>
+     </div>
+
+   </div>
+ </div>
+ <div class="row" >
+   <div class="col-sm-12">
+     <a class="btn btn-danger btn-block" ng-if="isBroadcaster()" ng-show="showBtn" ng-click="startConversation()">Start Conversation</a>
+     <a class="btn btn-danger btn-block" ng-if="isParticipant()" ng-show="showBtn" ng-click="joinConversation()" ng-show="online">Join Conversation</a>
+     </div>
+</div>
+  <div class="row m20" ng-if="!online">
+  	<h3>Group currently is offline.</h3>
+  </div>

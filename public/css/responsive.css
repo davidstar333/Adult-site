@@ -1,0 +1,252 @@
+.box-model .img-model img{
+  width: 100%;
+  height: 100% !important;
+  /*height: 150px !important;*/
+}
+@media all and (min-width: 320px) and (max-width: 900px) {
+  .full-container {
+    padding: 0px 15px;
+  }
+  .box-model .img-model img{
+    width: 100%;
+    height: 100% !important;
+    /*height: 196px !important;*/
+  }
+
+}
+@media all and (min-width: 320px) and (max-width: 767px) {
+  .search-top {
+    width: 180px;
+  }
+  .banner {
+    display: none;
+  }
+  .footer a {
+    margin: 0px 10px;
+  }
+  .button-login, .toggle-menu {
+    display: inline-block;
+  }
+
+  .login-top {
+    float: none;
+    position: absolute;
+    top: 44px;
+    right: 0px;
+    width: 250px;
+    z-index: 100;
+    background: #272727;
+    padding: 20px;
+    display: none;
+  }
+  .login-top .form-control {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+  .login-top button {
+    background: #9a1818;
+  }
+  .menu {
+    position: absolute;
+    top: 44px;
+    left: 15px;
+    background: #272727;
+    /*width:200px;*/
+    z-index: 100;
+    overflow: auto;
+    display: none;
+  }
+  .menu ul li, .menu ul li ul li {
+    float: none;
+    width: auto;
+  }
+/*  .menu ul li ul {
+    position: relative;
+    top: 0px;
+    padding: 10px 20px;
+
+  }*/
+  .line-menu{
+    /*padding-bottom: 5px;*/
+  }
+  .toggle-menu {
+    margin-top: 5px;
+    border: 1px solid #000;
+  }
+  .register {
+    margin: 0px;
+    width: auto;
+  }
+  .over-18year {
+    margin: 20px;
+  }
+  .register-image {
+   display: none; 
+  }
+  .menu-account {
+    margin-bottom: 20px;
+  }
+  .menu-left-account {
+    display: block;
+    text-align: left;
+  }
+  .menu-left-account i {
+    margin-right: 10px;
+  }
+  .menu-account ul {
+    display: none;
+  }
+  .user-box {
+    padding-top: 0px;
+  }
+  .pop-tip {
+    top: 10px;
+  }
+  .messages-conversation .message-input{
+    padding-left: 0;
+    /*padding-right: 100px;*/
+  }
+  .messages-conversation .message-input a.avatar{
+    display: none;
+  }
+  .messages-conversation .to{
+    padding-right: 0;
+
+  }
+  .messages-conversation .to .user{
+    width: 100px;
+  }
+  .messages-conversation .to .user .inner{
+    padding-left: 0;
+    text-align: right;
+    padding-right: 10px;
+  }
+  .messages-conversation .to .user .inner .avatar{
+    display: none;
+  }
+  .messages-conversation .to .message{
+    padding: 15px 100px 15px 15px;
+  }
+  .messages-conversation .from{
+    padding-left: 0;
+  }
+  .messages-conversation .from .user{
+    width: 80px;
+  }
+  .messages-conversation .from .user .inner .avatar{
+    display: none;
+  }
+  .messages-conversation .from .user .inner{
+    text-align: left;
+    padding-left: 10px;
+    padding-right: 0;
+  }
+  .messages-conversation .from .message{
+    padding: 15px 15px 15px 80px;
+    text-align: right;
+  }
+  .img-welcome {
+    display:none;
+  }
+  .title-popup {
+    padding:20px;
+    font-size:15px;
+    line-height:20px;
+  }
+  .editimage__preview-image {
+    width: 100%;
+  }
+  .box-model .img-model {
+    width: auto;
+    height: auto;
+  }
+}
+
+@media all and (min-width: 768px) and (max-width: 900px) {
+
+}
+@media (min-width: 768px) {
+  .modal-dialog {
+    /*width: 500px;*/
+    margin: 30px auto;
+  }
+  /*
+   * Row with equal height columns
+   * --------------------------------------------------
+   */
+  .row-eq-height {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display:         flex;
+  }
+  .row-eq-height .box-model{
+    height: 100%;
+  }
+  .flex-container {
+    padding: 0;
+    margin: 0;
+    /*list-style: none;*/
+    /*border: 1px solid silver;*/
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+  }
+
+  .nowrap  { 
+    -webkit-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+  }
+
+  .wrap    { 
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }  
+  .wrap li {
+    margin-bottom: 20px;
+  }
+
+  .wrap-reverse         { 
+    -webkit-flex-wrap: wrap-reverse;
+    flex-wrap: wrap-reverse;
+  }  
+  .wrap-reverse li {
+    background: deepskyblue;
+  }
+
+  .flex-item .box-model {
+    /*height: 100%;*/
+    /*    background: tomato;
+        padding: 5px;
+        
+        margin: 10px;
+    
+        line-height: 100px;
+        color: white;
+        font-weight: bold;
+        font-size: 2em;
+        text-align: center;*/
+  }
+  .popup-welcome .img-welcome img{
+    /*height: 450px;*/
+  }
+}
+@media (min-width: 990px) {
+  .menu ul li#category-sub.open a.dropdown-toggle:after{
+    content: "";
+    position: absolute;
+    top: 45px;
+    border-top: 8px solid #272727;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    margin-left: 0px;
+
+}
+  .over-18year{
+    /*margin-top: 50%;*/
+  }
+}

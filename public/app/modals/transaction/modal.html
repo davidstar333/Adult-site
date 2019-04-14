@@ -1,0 +1,57 @@
+<div class="modal-header btn-primary">
+  <h4 class="modal-title" id="myModalLabel">Transaction Detail</h4>
+</div> <!-- /.modal-header -->
+<div class="modal-body">
+  <table class="table">
+    <tr>
+      <td>Name</td>
+      <td><% transaction.customer_fname + ' ' + transaction.customer_lname %></td>
+    </tr>
+    <tr>
+      <td>Email</td>
+      <td><% transaction.email %></td>
+    </tr>
+    <tr>
+    <tr>
+      <td>Transaction ID</td>
+      <td><% transaction.subscription_id %></td>
+    </tr>
+    <tr>
+      <td>Card Type</td>
+      <td><% transaction.cardType %></td>
+    </tr>
+    <tr>
+      <td>Payment</td>
+      <td><% transaction.initialFormattedPrice %></td>
+    </tr>
+    <tr>
+      <td>Description</td>
+      <td><% transaction.price %></td>
+    </tr>
+    <tr>
+      <td>City</td>
+      <td><% transaction.city %></td>
+    </tr>
+    <tr>
+      <td>State</td>
+      <td><% transaction.state %></td>
+    </tr>
+    <tr>
+      <td>Country Code</td>
+      <td><% transaction.country %></td>
+    </tr>
+    <tr>
+      <td>Address</td>
+      <td><% transaction.address1 %></td>
+    </tr>
+    <tr>
+      <td>Date</td>
+      <td><% transaction.start_date %>
+      </td>
+    </tr>
+
+  </table>
+</div> <!-- /.modal-body -->
+<div class="modal-footer">
+  <button ng-click="close()" class="btn btn-primary">Close</button>
+</div> <!-- /.modal-footer -->

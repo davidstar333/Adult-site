@@ -1,0 +1,26 @@
+<div class="modal-header btn-primary">
+  <h4 class="modal-title" id="myModalLabel">Document</h4>
+</div> <!-- /.modal-header -->
+<div class="modal-body" ng-cloak>
+  <table class="table document" ng-show="document">
+    <tr>
+      <td>Id Image</td>
+      <td><img class="img-response" ng-src="/<%document.idImage%>"></td>
+    </tr>
+    <tr>
+      <td>Face Id</td>
+      <td><img class="img-response" ng-src="/<%document.faceId%>"></td>
+    </tr>
+    <tr>
+    <tr>
+      <td>Release Form</td>
+      <td><a class="btn btn-link" href="/admin/document/<% document.id %>" target="_blank">View</a></td>
+    </tr>
+
+  </table>
+  <p ng-show="!document"><% message %></p>
+</div> <!-- /.modal-body -->
+<div class="modal-footer">
+  <button ng-click="changeAccountStatus('active')" class="btn btn-info" ng-show="document.accountStatus == 'waiting'">Approve</button>
+  <button ng-click="close()" class="btn btn-primary">Close</button>
+</div> <!-- /.modal-footer -->

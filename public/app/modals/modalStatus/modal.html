@@ -1,0 +1,13 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="myModalLabel">User Status: <% user.accountStatus %></h4>
+</div> <!-- /.modal-header -->
+<div class="modal-body">
+  <p ng-bind-template="<% bodyText %>"></p>
+</div> <!-- /.modal-body -->
+<div class="modal-footer" ng-cloak>
+  <button class="btn btn-success btn-sm" ng-show='user.accountStatus == "suspend" || user.accountStatus == "notConfirmed" || user.accountStatus == "disable"' ng-click="changeAccountStatus('active')">Active</button>
+  <button class="btn btn-warning btn-sm" ng-show='user.accountStatus == "active"' ng-click="changeAccountStatus('suspend')">Suspend</button>
+  <button class="btn btn-warning btn-sm" ng-show='user.accountStatus == "waiting"' ng-click="changeAccountStatus('active')">Approve</button>
+  <button class="btn btn-danger btn-sm" ng-show='user.accountStatus != "disable"' ng-click="changeAccountStatus('disable')">Disable</button>
+  <button class="btn btn-default" ng-click='close()'>Close</button>
+</div> <!-- /.modal-footer -->

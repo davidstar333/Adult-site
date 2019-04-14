@@ -1,0 +1,64 @@
+<div class="popup-welcome">
+  <div class="modal-welcome">
+    <div class="content-popup">
+      <div class="title-popup">
+        Create Your <span class="color-red">Free</span> account now, it takes
+        only a few seconds
+        <button type="button" class="close" ng-click="cancel()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="padding-popup">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-register">
+              <form name="frmRegister" class="form" role="form" novalidate ng-submit="createFreeAccount(frmRegister)">
+              <h3 class="color-red">Create Your Free Account</h3>
+              <div class="form-group">
+                <label>Username:</label>
+                <input type="text" class="form-control" ng-model="user.username" name="username" ng-required="true" ng-maxlength="40">
+                <div class="">
+                  <span class="label label-danger" ng-show="frmRegister.$submitted && frmRegister.username.$error.required">Username is Required!</span>
+                  <span class="label label-danger" ng-show="frmRegister.username.$error.maxlength">Username Too long!</span>
+                  <span class="label label-danger" ng-show="frmRegister.$submitted && errors"><% errors['username'][0] %></span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Password:</label>
+                <input type="password" class="form-control" name="password" ng-model="user.password" ng-required="true" ng-minlength="6" ng-maxlength="32">
+                <div class="">
+                  <span class="label label-danger" ng-show="frmRegister.$submitted && frmRegister.password.$error.required">Password is Required!</span>
+                   <span class="label label-danger" ng-show="frmRegister.password.$error.minlength">
+        Password Too short!</span>
+      <span class="label label-danger" ng-show="frmRegister.password.$error.maxlength">
+        Password Too long!</span>
+                  <span class="label label-danger" ng-show="frmRegister.$submitted && errors"><% errors['password'][0] %></span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Email address:</label>
+                <input type="email" class="form-control" ng-model="user.email" validate-email name="email" ng-required="true" ng-maxlength="40">
+                <div class="">
+                  <span class="label label-danger" ng-show="frmRegister.$submitted && frmRegister.email.$error.required">Email is Required!</span>
+                  <span class="label label-danger" ng-show="frmRegister.$submitted && frmRegister.email.$error.email">Not valid email!</span>
+                  <span class="label label-danger" ng-show="frmRegister.email.$error.maxlength">Email Too long!</span>
+                  <span class="label label-danger" ng-show="frmRegister.$submitted && errors"><% errors['email'][0] %></span>
+                </div>
+              </div>
+
+
+              <button class="btn btn-danger btn-lg btn-block" type="submit" ng-disabled="formSubmitted">Create Free Account</button>
+              <h5 class="text-center" style="line-height:23px">100% FREE Live Cams, browse online cams from REAL PEOPLE like you!
+                You must be over 18 years old to register</h5>
+              </form>
+            </div>
+          </div>
+          <div class="col-sm-6 img-welcome text-right">
+              <img ng-src="<%welcomeImage%>" class="img-responsive">
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
